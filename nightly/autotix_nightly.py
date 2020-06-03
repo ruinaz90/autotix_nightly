@@ -2,7 +2,6 @@
 # autotix_nightly.py - Automate nightly for fulfillment team
 
 import pandas as pd
-import csv
 import ezsheets
 import datetime
 
@@ -18,8 +17,13 @@ nightly_file = open("./Excel/AllSalesTest_Updated.csv", "w")
 nightly_file.writelines(bway_txt)
 nightly_file.close()
 
-todays_date = datetime.datetime.now()
-todays_date_str = todays_date.strftime('%m/%d')
-
 ex_file = pd.read_csv("./Excel/AllSalesTest_Updated.csv")
-ex_file.to_clipboard(excel=True, sep=None, index=False)
+ex_file.to_clipboard(excel=True, index=False)
+
+todays_date = datetime.datetime.now()
+todays_date_str = todays_date.strftime('%m/%d/%y')
+
+nightly_gdoc = ezsheets.Spreadsheet('1EwvByoi9LIQPsqwFraAE38xaghENWKhyI-_c1_3yWEM')
+nightly_gdoc.createSheet(todays_date_str)
+
+nightly_gdoc.refresh()
