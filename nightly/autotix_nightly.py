@@ -17,7 +17,7 @@ def sort_columns(report_filename):
 
     # Remove " on Broadway"
     bway_txt = open(report_filename, 'r', encoding='utf8')
-    bway_txt = "".join([i for i in bway_txt]).replace(' on Broadway', '')
+    bway_txt = ''.join([i for i in bway_txt]).replace(' on Broadway', '')
     nightly_file = open(report_filename, 'w', encoding='utf8')
     nightly_file.writelines(bway_txt)
     nightly_file.close()
