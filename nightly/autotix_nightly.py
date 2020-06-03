@@ -1,9 +1,9 @@
 #! python3
 # autotix_nightly.py - Automate nightly for fulfillment team
 
-import pandas
+import pandas as pd
 
-input_file = pandas.read_csv("./Excel/AllSales3.csv")
+input_file = pd.read_csv("./Excel/AllSales3.csv")
 keep_col = ['Name', 'Show', 'Performance Date', 'Confirmation Date', '# of Seats', 'Section', 'Row', 'Start',
             'End']
 
