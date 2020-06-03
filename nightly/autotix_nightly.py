@@ -1,20 +1,11 @@
 #! python3
-# autotix_nightly.py - Automate nightly
+# autotix_nightly.py - Automate nightly for fulfillment team
 
-import ezsheets
-import openpyxl
-import pyexcel
-import pyexcel
-import os
-from pathlib import Path
+import pandas
 
-pyexcel.save_book_as(file_name='./Excel/AllSales1.xls', dest_file_name='./Excel/AllSales1.xlsx')
+input_file = pandas.read_csv("./Excel/AllSales3.csv")
+keep_col = ['Name', 'Show', 'Performance Date', 'Confirmation Date', '# of Seats', 'Section', 'Row', 'Start',
+            'End']
 
-nightly_excel = openpyxl.load_workbook('./Excel/AllSales1.xlsx')
-nightly_excel_sheet = nightly_excel.active
-
-nightly_excel_sheet.delete_cols(1)
-nightly_excel_sheet.delete_cols(2,5)
-nightly_excel_sheet.delete_cols(4)
-nightly_excel_sheet.delete_cols(10,9)
-nightly_excel.save('./Excel/AllSales1_Updated.xlsx')
+nightly_file = input_file[keep_col].sort_values(by=['Performance Date', 'Show', 'Name'], ascending=True)
+nightly_file.to_csv("./Excel/AllSales3_Updated.csv", index=False)
