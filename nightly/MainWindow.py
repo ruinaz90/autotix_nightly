@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 
 def run_clicked():
@@ -20,7 +21,10 @@ def menu_instructions_clicked():
 
 
 def menu_about_clicked():
-    print("About clicked!")
+    msg = QMessageBox()
+    msg.setWindowTitle("About")
+    msg.setText("AutoTix Nightly\nVersion 1.0\n\nDeveloped by Ruina")
+    x = msg.exec_()
 
 
 class Ui_main_window(object):
@@ -73,7 +77,7 @@ class Ui_main_window(object):
 
     def retranslateUi(self, main_window):
         _translate = QtCore.QCoreApplication.translate
-        main_window.setWindowTitle(_translate("main_window", "AutoTix - Nightly"))
+        main_window.setWindowTitle(_translate("main_window", "AutoTix Nightly"))
         self.run_button.setText(_translate("main_window", "Run"))
         self.text_browser.setHtml(_translate("main_window", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
