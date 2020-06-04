@@ -7,9 +7,6 @@ import datetime
 
 
 # AutoTix Nightly functions
-from googleapiclient.errors import HttpError
-
-
 def copy_clipboard(report_filename):
     # Copy report contents to clipboard
     ex_file = pd.read_csv(report_filename)
