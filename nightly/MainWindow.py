@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\arenz\PycharmProjects\autotix\nightly\mainwindow.ui'
+# Form implementation generated from reading ui file 'C:\Users\Ruina\PycharmProjects\autotix\nightly\mainwindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.0
 #
@@ -9,10 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
 
 
-class Ui_MainWindow(object):
+class Ui_main_window(object):
     def setupUi(self, main_window):
         main_window.setObjectName("main_window")
         main_window.resize(389, 254)
@@ -26,7 +25,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.progres_bar, 3, 1, 1, 1)
         self.logo = QtWidgets.QLabel(self.centralwidget)
         self.logo.setText("")
-        self.logo.setPixmap(QtGui.QPixmap("C:\\Users\\arenz\\PycharmProjects\\autotix\\nightly\\../1x/logo_nightly_sm.png"))
+        self.logo.setPixmap(QtGui.QPixmap("C:\\Users\\Ruina\\PycharmProjects\\autotix\\nightly\\../1x/logo_nightly_sm.png"))
         self.logo.setObjectName("logo")
         self.gridLayout.addWidget(self.logo, 0, 0, 1, 2)
         self.run_button = QtWidgets.QPushButton(self.centralwidget)
@@ -56,6 +55,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(main_window)
         QtCore.QMetaObject.connectSlotsByName(main_window)
 
+        self.run_button.clicked.connect(self.run_clicked)
+
     def retranslateUi(self, main_window):
         _translate = QtCore.QCoreApplication.translate
         main_window.setWindowTitle(_translate("main_window", "AutoTix - Nightly"))
@@ -70,3 +71,8 @@ class Ui_MainWindow(object):
         self.menu_help.setTitle(_translate("main_window", "Help"))
         self.menu_about.setText(_translate("main_window", "About"))
         self.menu_instructions.setText(_translate("main_window", "Instructions"))
+
+    def run_clicked(self):
+        print("Run button clicked!")
+
+
