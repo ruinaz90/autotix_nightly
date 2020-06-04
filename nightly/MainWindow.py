@@ -11,6 +11,18 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+def run_clicked():
+    print("Run button clicked!")
+
+
+def menu_instructions_clicked():
+    print("Instructions clicked!")
+
+
+def menu_about_clicked():
+    print("About clicked!")
+
+
 class Ui_main_window(object):
     def setupUi(self, main_window):
         main_window.setObjectName("main_window")
@@ -55,7 +67,9 @@ class Ui_main_window(object):
         self.retranslateUi(main_window)
         QtCore.QMetaObject.connectSlotsByName(main_window)
 
-        self.run_button.clicked.connect(self.run_clicked)
+        self.run_button.clicked.connect(run_clicked)
+        self.menu_instructions.triggered.connect(menu_instructions_clicked)
+        self.menu_about.triggered.connect(menu_about_clicked)
 
     def retranslateUi(self, main_window):
         _translate = QtCore.QCoreApplication.translate
@@ -71,8 +85,4 @@ class Ui_main_window(object):
         self.menu_help.setTitle(_translate("main_window", "Help"))
         self.menu_about.setText(_translate("main_window", "About"))
         self.menu_instructions.setText(_translate("main_window", "Instructions"))
-
-    def run_clicked(self):
-        print("Run button clicked!")
-
 
