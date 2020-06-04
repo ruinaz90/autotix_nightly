@@ -55,7 +55,7 @@ def sort_columns(report_filename):
 
 
 # GUI functions
-def run_clicked():
+def run_clicked(self):
     print("Run button clicked!")
     #latest_path = latest_file()
     #sort_columns(latest_path)
@@ -84,7 +84,7 @@ class Ui_main_window(object):
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
         self.progress_bar = QtWidgets.QProgressBar(self.centralwidget)
-        self.progress_bar.setProperty("value", 24)
+        self.progress_bar.setProperty("value", 0)
         self.progress_bar.setObjectName("progres_bar")
         self.gridLayout.addWidget(self.progress_bar, 3, 1, 1, 1)
         self.logo = QtWidgets.QLabel(self.centralwidget)
