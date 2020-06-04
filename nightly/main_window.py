@@ -9,9 +9,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 
-class Ui_main_window(object):
+class Ui_MainWindow(object):
     def setupUi(self, main_window):
         main_window.setObjectName("main_window")
         main_window.resize(389, 254)
