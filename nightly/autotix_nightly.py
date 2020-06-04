@@ -19,7 +19,7 @@ def latest_file():
     folder_path = Path('C:/Users/Ruina/PycharmProjects/autotix/nightly/Excel')
     list_of_paths = folder_path.glob('*.csv')
     recent_file = max(list_of_paths, key=lambda p: p.stat().st_ctime)
-    print("Most recent report is "+ str(recent_file))
+    print("Most recent report is " + str(recent_file))
     return recent_file
 
 
