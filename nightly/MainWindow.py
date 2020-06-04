@@ -60,10 +60,10 @@ def sort_columns(report_filename):
 # GUI functions
 def run_clicked():
     print("Run button clicked!")
-    latest_path = latest_file()
-    sort_columns(latest_path)
-    nightly_doc_tab()
-    copy_clipboard(latest_path)
+    #latest_path = latest_file()
+    #sort_columns(latest_path)
+    #nightly_doc_tab()
+    #copy_clipboard(latest_path)
 
 
 def menu_instructions_clicked():
@@ -81,19 +81,19 @@ def menu_about_clicked():
 class Ui_main_window(object):
     def setupUi(self, main_window):
         main_window.setObjectName("main_window")
-        main_window.resize(389, 254)
+        main_window.resize(400, 300)
         self.centralwidget = QtWidgets.QWidget(main_window)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
-        self.progres_bar = QtWidgets.QProgressBar(self.centralwidget)
-        self.progres_bar.setProperty("value", 24)
-        self.progres_bar.setObjectName("progres_bar")
-        self.gridLayout.addWidget(self.progres_bar, 3, 1, 1, 1)
+        self.progress_bar = QtWidgets.QProgressBar(self.centralwidget)
+        self.progress_bar.setProperty("value", 24)
+        self.progress_bar.setObjectName("progres_bar")
+        self.gridLayout.addWidget(self.progress_bar, 3, 1, 1, 1)
         self.logo = QtWidgets.QLabel(self.centralwidget)
         self.logo.setText("")
         self.logo.setPixmap(
-            QtGui.QPixmap("C:\\Users\\Ruina\\PycharmProjects\\autotix\\nightly\\../1x/logo_nightly_sm.png"))
+            QtGui.QPixmap("C:\\Users\\arenz\\PycharmProjects\\autotix\\nightly\\../1x/logo_nightly_sm.png"))
         self.logo.setObjectName("logo")
         self.gridLayout.addWidget(self.logo, 0, 0, 1, 2)
         self.run_button = QtWidgets.QPushButton(self.centralwidget)

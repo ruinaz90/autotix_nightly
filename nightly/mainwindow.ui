@@ -16,11 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="3" column="1">
-     <widget class="QProgressBar" name="progres_bar">
-      <property name="value">
-       <number>24</number>
-      </property>
-     </widget>
+     <widget class="QProgressBar" name="progress_bar"/>
     </item>
     <item row="0" column="0" colspan="2">
      <widget class="QLabel" name="logo">
