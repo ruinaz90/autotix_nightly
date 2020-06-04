@@ -70,7 +70,7 @@ def menu_instructions_clicked():
 def menu_about_clicked():
     msg = QMessageBox()
     msg.setWindowTitle("About")
-    msg.setText("AutoTix Nightly\nVersion 1.0\n\nDeveloped by Ruina")
+    msg.setText("AutoTix Nightly\nVersion 1.0, built on June 4, 2020\n\nCopyright © 2020")
     msg.exec_()
 
 
