@@ -17,6 +17,16 @@ for row in example_list:
         output_dict_writer.writerow({'Name': ''})
 
 
+nightly_gdoc = ezsheets.Spreadsheet('1EwvByoi9LIQPsqwFraAE38xaghENWKhyI-_c1_3yWEM')
+nightly_gdoc.createSheet(todays_date_str)
+current_sheet = nightly_gdoc[todays_date_str]
+
+i = 1
+for data in nightly_data:
+    current_sheet.updateRow(i, data)
+    i += 1
+
+
 
 
 nightly_csv = open('./Excel/AllSalesTest_Updated.csv')

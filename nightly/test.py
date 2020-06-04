@@ -1,8 +1,22 @@
 import sys
 from PyQt5 import QtWidgets, uic
 
-app = QtWidgets.QApplication(sys.argv)
+from nightly.main_window import Ui_main_window
 
-window = uic.loadUi("mainwindow.ui")
-window.show()
-app.exec()
+
+class main_window(QtWidgets.QMainWindow):
+    def __init__(self, *args, **kwargs):
+        super(main_window, self).__init__(*args, **kwargs)
+
+        # Load the UI Page
+        uic.loadUi('mainwindow.ui', self)
+
+
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    main_win = main_window()
+    main_win.show()
+    sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    main()
