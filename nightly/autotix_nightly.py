@@ -7,28 +7,20 @@ import ezsheets
 import datetime
 
 
-def sort_columns(report_filename):
-    # Remove and sort columns
-    input_file = pd.read_csv(report_filename)
-    keep_col = ['Name', 'Show', 'Performance Date', 'Confirmation Date', '# of Seats', 'Section', 'Row', 'Start', 'End']
-    nightly_file = input_file[keep_col].sort_values(by=['Performance Date', 'Show', 'Name'], ascending=True)
-    nightly_file.to_csv(report_filename, index=False)
-    print("Sorting " + str(report_filename) + "...")
-
-    # Remove " on Broadway"
-    bway_txt = open(report_filename, 'r', encoding='utf8')
-    bway_txt = ''.join([i for i in bway_txt]).replace(' on Broadway', '')
-    nightly_file = open(report_filename, 'w', encoding='utf8')
-    nightly_file.writelines(bway_txt)
-    nightly_file.close()
-    print("Cleaning up show names...")
-
-
 def copy_clipboard(report_filename):
     # Copy report contents to clipboard
     ex_file = pd.read_csv(report_filename)
     ex_file.to_clipboard(excel=True, index=False)
     print("Data copied to clipboard! Please paste into the Nightly Check-in doc!")
+
+
+def latest_file():
+    # Find the latest sales report file
+    folder_path = Path('C:/Users/Ruina/PycharmProjects/autotix/nightly/Excel')
+    list_of_paths = folder_path.glob('*.csv')
+    recent_file = max(list_of_paths, key=lambda p: p.stat().st_ctime)
+    print("Most recent report is "+ str(recent_file))
+    return recent_file
 
 
 def nightly_doc_tab():
@@ -42,13 +34,21 @@ def nightly_doc_tab():
     print("New tab created in Nightly doc: " + todays_date_str + "...")
 
 
-def latest_file():
-    # Find the latest sales report file
-    folder_path = Path('C:/Users/Ruina/PycharmProjects/autotix/nightly/Excel')
-    list_of_paths = folder_path.glob('*.csv')
-    recent_file = max(list_of_paths, key=lambda p: p.stat().st_ctime)
-    print("Most recent report is "+ str(recent_file))
-    return recent_file
+def sort_columns(report_filename):
+    # Remove and sort columns
+    input_file = pd.read_csv(report_filename)
+    keep_col = ['Name', 'Show', 'Performance Date', 'Confirmation Date', '# of Seats', 'Section', 'Row', 'Start', 'End']
+    nightly_file = input_file[keep_col].sort_values(by=['Performance Date', 'Show', 'Name'], ascending=True)
+    nightly_file.to_csv(report_filename, index=False)
+    print("Sorting " + str(report_filename) + "...")
+
+    # Remove "on Broadway" from show names
+    bway_txt = open(report_filename, 'r', encoding='utf8')
+    bway_txt = ''.join([i for i in bway_txt]).replace(' on Broadway', '')
+    nightly_file = open(report_filename, 'w', encoding='utf8')
+    nightly_file.writelines(bway_txt)
+    nightly_file.close()
+    print("Cleaning up show names...")
 
 
 # Run the program
