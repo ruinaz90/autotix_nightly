@@ -1,3 +1,7 @@
+#! python3
+# AutoTix Nightly - Nightly automation for fulfillment team
+# main.py - Main file
+
 # GUI import
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
 from PyQt5 import uic
