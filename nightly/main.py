@@ -29,7 +29,7 @@ def copy_clipboard(report_filename):
     # Copy report contents to clipboard
     ex_file = pd.read_csv(report_filename)
     ex_file.to_clipboard(excel=True, index=False)
-    logging.debug("Data copied to clipboard! Paste data into the Nightly Check-in doc!")
+    logging.debug("Information is ready! Go to the Nightly Check-in doc and paste it in the tab with today's date!")
 
 
 def latest_file():
@@ -106,7 +106,7 @@ class MyApp(QMainWindow, Ui_MainWindow):
         self.progress_bar.setValue(100)
         msg = QMessageBox()
         msg.setWindowTitle("Done")
-        msg.setText("Data copied to clipboard! Paste data into the Nightly Check-in doc!")
+        msg.setText("Information is ready! Go to the Nightly Check-in doc and paste it in the tab with today's date!")
         msg.exec_()
 
 
