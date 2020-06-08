@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -
 logging.disable(logging.CRITICAL)
 
 
-qt_creator_file = "mainwindow_mac.ui"    # Enter file here.
+qt_creator_file = "mainwindow_mac.ui"
 
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qt_creator_file)
 
