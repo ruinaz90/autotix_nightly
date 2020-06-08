@@ -1,5 +1,4 @@
-import sys
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets
 
 from nightly.MainWindow import Ui_main_window
 

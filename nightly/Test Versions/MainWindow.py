@@ -90,7 +90,7 @@ class Ui_main_window(object):
         self.logo = QtWidgets.QLabel(self.centralwidget)
         self.logo.setText("")
         self.logo.setPixmap(
-            QtGui.QPixmap("C:\\Users\\Ruina\\PycharmProjects\\autotix\\nightly\\../1x/logo_nightly_sm.png"))
+            QtGui.QPixmap("/1x/logo_nightly_sm.png"))
         self.logo.setObjectName("logo")
         self.gridLayout.addWidget(self.logo, 0, 0, 1, 2)
         self.run_button = QtWidgets.QPushButton(self.centralwidget)

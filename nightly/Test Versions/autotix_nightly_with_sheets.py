@@ -6,7 +6,7 @@ import ezsheets
 import datetime
 import csv
 
-input_file = pd.read_csv("./Excel/AllSales3.csv")
+input_file = pd.read_csv("../Excel/AllSales3.csv")
 keep_col = ['Name', 'Show', 'Performance Date', 'Confirmation Date', '# of Seats', 'Section', 'Row', 'Start',
             'End']
 nightly_file = input_file[keep_col].sort_values(by=['Performance Date', 'Show', 'Name'], ascending=True)
