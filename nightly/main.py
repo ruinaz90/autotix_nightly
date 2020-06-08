@@ -1,10 +1,19 @@
-import sys
+# GUI import
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
 from PyQt5 import uic
 from pathlib import Path
+
+# Code import
+import sys
 import pandas as pd
 import ezsheets
 import datetime
+
+# Logging import
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s -  %(levelname)s -  %(message)s')
+# logging.disable(logging.CRITICAL)
+
 
 qt_creator_file = "mainwindow.ui"    # Enter file here.
 
@@ -16,15 +25,15 @@ def copy_clipboard(report_filename):
     # Copy report contents to clipboard
     ex_file = pd.read_csv(report_filename)
     ex_file.to_clipboard(excel=True, index=False)
-    print("Data copied to clipboard! Please paste into the Nightly Check-in doc!")
+    logging.debug("Data copied to clipboard! Paste data into the Nightly Check-in doc!")
 
 
 def latest_file():
     # Find the latest sales report file
-    folder_path = Path('C:/Users/arenz/PycharmProjects/autotix/nightly/Excel')
+    folder_path = Path('C:/Users/Ruina/PycharmProjects/autotix/nightly/Excel')
     list_of_paths = folder_path.glob('*.csv')
     recent_file = max(list_of_paths, key=lambda p: p.stat().st_ctime)
-    print("Most recent report is " + str(recent_file) + ".")
+    logging.debug("Most recent report is " + str(recent_file) + ".")
     return recent_file
 
 
@@ -37,9 +46,9 @@ def nightly_doc_tab():
     nightly_gdoc = ezsheets.Spreadsheet('1EwvByoi9LIQPsqwFraAE38xaghENWKhyI-_c1_3yWEM')
     try:
         nightly_gdoc.createSheet(todays_date_str)
-        print("New tab created in Nightly doc: " + todays_date_str + "...")
+        logging.debug("New tab created in Nightly doc: " + todays_date_str + "...")
     except:
-        print("Sheet titled '" + todays_date_str + "' already exists.")
+        logging.debug("Sheet titled '" + todays_date_str + "' already exists.")
 
 
 def sort_columns(report_filename):
@@ -48,7 +57,7 @@ def sort_columns(report_filename):
     keep_col = ['Name', 'Show', 'Performance Date', 'Confirmation Date', '# of Seats', 'Section', 'Row', 'Start', 'End']
     nightly_file = input_file[keep_col].sort_values(by=['Performance Date', 'Show', 'Name'], ascending=True)
     nightly_file.to_csv(report_filename, index=False)
-    print("Sorting " + str(report_filename) + "...")
+    logging.debug("Sorting " + str(report_filename) + "...")
 
     # Remove "on Broadway" from show names
     bway_txt = open(report_filename, 'r', encoding='utf8')
@@ -56,18 +65,18 @@ def sort_columns(report_filename):
     nightly_file = open(report_filename, 'w', encoding='utf8')
     nightly_file.writelines(bway_txt)
     nightly_file.close()
-    print("Cleaning up show names...")
+    logging.debug("Cleaning up show names...")
 
 
 # GUI functions
 def menu_instructions_clicked():
-    print("Instructions clicked!")
+    logging.debug("Instructions clicked!")
 
 
 def menu_about_clicked():
     msg = QMessageBox()
     msg.setWindowTitle("About")
-    msg.setText("AutoTix Nightly\nVersion 1.0, built on June 4, 2020\n\nCopyright © 2020")
+    msg.setText("AutoTix Nightly\nVersion 1.0, built on June 8, 2020\n\nCopyright © 2020")
     msg.exec_()
 
 
@@ -82,12 +91,19 @@ class MyApp(QMainWindow, Ui_MainWindow):
         self.menu_about.triggered.connect(menu_about_clicked)
 
     def run_clicked(self):
-        print("Run button clicked!")
+        logging.debug("Run button clicked!")
         latest_path = latest_file()
-        self.progress_bar.setValue(10)
-        # sort_columns(latest_path)
-        # nightly_doc_tab()
-        # copy_clipboard(latest_path)
+        self.progress_bar.setValue(25)
+        sort_columns(latest_path)
+        self.progress_bar.setValue(50)
+        nightly_doc_tab()
+        self.progress_bar.setValue(75)
+        copy_clipboard(latest_path)
+        self.progress_bar.setValue(100)
+        msg = QMessageBox()
+        msg.setWindowTitle("Done")
+        msg.setText("Data copied to clipboard! Paste data into the Nightly Check-in doc!")
+        msg.exec_()
 
 
 if __name__ == "__main__":
