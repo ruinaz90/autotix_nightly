@@ -75,6 +75,15 @@ def sort_columns(report_filename):
 # GUI functions
 def menu_instructions_clicked():
     logging.debug("Instructions clicked!")
+    msg = QMessageBox()
+    msg.setWindowTitle("Instructions")
+    msg.setText("AutoTix Nightly is an app that automates part of nightly check-in for the fulfillment team."
+                "\n\n1. Pull a sales report on CMS and export it as a CSV. Save this file to the Downloads folder."
+                "\n\n2. Click the Run button in this app. A popup will appear when the app finishes running. Click OK."
+                " You can close the app after this."
+                "\n\n3. Go to the Nightly Check-in doc and click on the tab with today's date."
+                "\n\n4. Paste the data in cell A1.")
+    msg.exec_()
 
 
 def menu_about_clicked():
