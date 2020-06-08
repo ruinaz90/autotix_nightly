@@ -8,6 +8,7 @@ from PyQt5 import uic
 from pathlib import Path
 
 # Code import
+import os
 import sys
 import pandas as pd
 import ezsheets
@@ -34,7 +35,8 @@ def copy_clipboard(report_filename):
 
 def latest_file():
     # Find the latest sales report file
-    folder_path = Path('/Users/macos/Downloads/')
+    download_folder = str(os.path.join(Path.home(), "Downloads"))
+    folder_path = Path(download_folder)
     list_of_paths = folder_path.glob('AllSales*.csv')
     recent_file = max(list_of_paths, key=lambda p: p.stat().st_ctime)
     logging.debug("Most recent report is " + str(recent_file) + ".")
