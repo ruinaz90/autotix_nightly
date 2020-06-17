@@ -2,7 +2,7 @@
 An application to automate nightly for the fulfillment team.
 
 ## Installation
-Use the package manager to install AutoTix Nightly.
+Unzip the file and run 'python3 AutoTix-Nightly.py' in a terminal window.
 
 ## Instructions
 1. Pull a sales report on CMS and export it as a CSV. Save this file to the Downloads folder.
@@ -10,6 +10,3 @@ Use the package manager to install AutoTix Nightly.
 after this.
 3. Go to the Nightly Check-in doc and click on the tab with today's date.
 4. Paste the data in cell A1.
-
-## Contribute
-Send me your questions or comments.
