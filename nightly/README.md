@@ -2,7 +2,10 @@
 An application to automate nightly for the fulfillment team.
 
 ## Installation
-Unzip the file and run 'python3 AutoTix-Nightly.py' in a terminal window.
+1. Download [AutoTix-Nightly.zip](https://github.com/rzhao28/autotix/blob/master/nightly/AutoTix-Nightly.zip).
+2. Unzip the file to the home directory.
+3. Open a terminal window and `cd` into the installation directory.
+4. Run `python3 AutoTix-Nightly.py`.
 
 ## Instructions
 1. Pull a sales report on CMS and export it as a CSV. Save this file to the Downloads folder.
