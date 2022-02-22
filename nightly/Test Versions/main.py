@@ -34,7 +34,7 @@ def copy_clipboard(report_filename):
 
 def latest_file():
     # Find the latest sales report file
-    folder_path = Path('C:/Users/Ruina/PycharmProjects/autotix/nightly/Excel')
+    folder_path = Path('C:/autotix/nightly/Excel')
     list_of_paths = folder_path.glob('*.csv')
     recent_file = max(list_of_paths, key=lambda p: p.stat().st_ctime)
     logging.debug("Most recent report is " + str(recent_file) + ".")
